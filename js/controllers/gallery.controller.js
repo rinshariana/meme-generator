@@ -28,3 +28,8 @@ function renderCards() {
 
     elCards.innerHTML = strHtml
 }
+
+function onFilterCards(elInput) {
+	gFilter = elInput.value
+	renderCards()
+}

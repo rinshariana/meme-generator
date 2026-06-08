@@ -3,30 +3,36 @@
 const STORAGE_KEY = 'cards_array'
 
 let gCards
-_createCards()
+_initCards()
 
 function getCards(filter = null) {
     if (!filter) return gCards
+    console.log(filter)
 
     const searchTxt = filter.toLowerCase()
-
-    return gCards.filter(card => 
-        card.tags.toLowerCase().includes(searchTxt))
+    return gCards.filter(card => card.tags.toLowerCase().includes(searchTxt))
 }
 
 // Private
 
 function _createCard(id, url) {
-    return {id, url, tags:''}
+    return { id, url, tags: '' }
 }
 
-function _createCards() {
-    gCards = loadFromStorage(STORAGE_KEY)
-    if (gCards && gCards.length > 0) return
+async function _initCards() {
+    const savedCards = loadFromStorage(STORAGE_KEY)
+    if (savedCards && savedCards.length > 0) {
+        gCards = savedCards
+        return
+    }
 
-    gCards = new Array(18).fill(0).map((element, idx) => {
-        return _createCard(idx + 1, `/images/square/${idx + 1}.jpg`)
-    })
+    const response = await fetch('/metadata/cards.json')
+    if (!response.ok) {
+        gCards = []
+        return
+    }
+
+    gCards = await response.json()
     _saveCards()
 }
 
