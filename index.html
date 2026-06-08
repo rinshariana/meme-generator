@@ -9,7 +9,7 @@
 
 </head>
 
-<body class="main-layout">
+<body class="main-layout" onload="onInit()">
     <!-- <div class="main-screen" onclick="toggleMenu()"></div> -->
 
     <header class="main-header grid flow-column space-between">
@@ -27,8 +27,12 @@
     <main class="main-content grid">
         <input oninput="onFilterBooks(this)" class="search-input" type="text" placeholder="Search" />
 
-        <div class="cards"></div>
+        <div class="cards grid"></div>
     </main>
+
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/gallery.service.js"></script>
+    <script src="js/controllers/gallery.controller.js"></script>
 </body>
 
 </html>

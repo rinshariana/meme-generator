@@ -32,3 +32,9 @@
 .main-content .cards {
     grid-row: 4;
 }
+
+/* Cards Layout */
+.cards {
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 25px;
+}
