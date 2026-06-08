@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme generator</title>
+    <link rel="stylesheet" href="styles/styles.css">
+
+</head>
+
+<body class="main-layout">
+    <!-- <div class="main-screen" onclick="toggleMenu()"></div> -->
+
+    <header class="main-header grid flow-column space-between">
+        <div class="main-logo">MemeGen</div>
+        <nav class="main-nav">
+            <ul class="clean-list grid flow-column">
+                <li><a href="#">Memes</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <!-- <button class="btn-toggle-menu" onclick="toggleMenu()" type="button">☰</button> -->
+    </header>
+
+    <main class="main-content grid">
+        <input oninput="onFilterBooks(this)" class="search-input" type="text" placeholder="Search" />
+
+        <div class="cards"></div>
+    </main>
+</body>
+
+</html>

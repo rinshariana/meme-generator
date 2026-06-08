@@ -1,0 +1,34 @@
+/* Main Layout */
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 1.25rem 1fr 1.25rem;
+}
+
+.main-layout>* {
+    grid-column: 2;
+}
+
+/* Header Layout */
+
+.main-header {
+    align-items: center;
+}
+
+.main-nav>ul {
+    gap: 3.125em;
+}
+
+/* Main Content Layout */
+
+.main-content {
+    grid-template-rows: 1.875em 2.625em 1.875em auto;
+}
+
+.main-content .search-input {
+    grid-row: 2;
+}
+
+.main-content .cards {
+    grid-row: 4;
+}
