@@ -3,7 +3,7 @@
 const STORAGE_KEY = 'cards_array'
 
 let gCards
-_initCards()
+// _initCards()
 
 function getCards(filter = null) {
     if (!filter) return gCards
@@ -26,7 +26,7 @@ async function _initCards() {
         return
     }
 
-    const response = await fetch('/metadata/cards.json')
+    const response = await fetch('metadata/cards.json')
     if (!response.ok) {
         gCards = []
         return

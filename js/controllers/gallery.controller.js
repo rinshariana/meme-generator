@@ -3,7 +3,7 @@
 let gFilter = null
 
 async function onInit() {
-    await initCards()
+    await _initCards()
     renderCards()
 }
 
