@@ -5,9 +5,14 @@
     grid-template-columns: 1.25rem 1fr 1.25rem;
 }
 
-.main-layout>* {
+.main-layout>*:not(.full) {
     grid-column: 2;
 }
+
+.main-layout>*.full {
+  grid-column: 1 / -1;
+}
+
 
 /* Header Layout */
 
@@ -19,17 +24,18 @@
     gap: 3.125em;
 }
 
-/* Main Content Layout */
 
-.main-content {
+/* Main Content Gallery Layout */
+
+.main-content.gallery {
     grid-template-rows: 1.875em 2.625em 1.875em auto;
 }
 
-.main-content .search-input {
+.main-content.gallery .search-input {
     grid-row: 2;
 }
 
-.main-content .cards {
+.main-content.gallery .cards {
     grid-row: 4;
 }
 

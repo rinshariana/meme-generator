@@ -1,5 +1,8 @@
 :root {
     /* color palette */
+    
+    --clr-primary-2: #F8F8F8;
     --clr-primary-1: #E5E5E5;
     --clr-primary-base: #989898;
+    --clr-primary--1: #FF9826;
 }

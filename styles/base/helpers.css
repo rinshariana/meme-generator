@@ -23,3 +23,7 @@
 .grid.center{
     place-items: center;
 }
+
+.grid.full {
+    grid-column: 1/-1;
+}
