@@ -13,10 +13,12 @@
 @import url('./components/main-header.css');
 /* @import url('./components/main-logo.css'); */
 /* @import url('./components/main-nav.css'); */
-@import url('./components/card.css');
+
 @import url('./components/search.css');
-/* @import url('./components/main-footer.css'); */
-/* @import url('./components/social.css'); */
+@import url('./components/card.css');
+
+@import url('./components/canvas.css');
+@import url('./components/toolbar.css');
 
 
 /*mq*/
