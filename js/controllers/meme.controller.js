@@ -1,28 +1,46 @@
 'use strict'
 
-// const canvas = document.querySelector('.canvas')
-// const ctx = canvas.getContext('2d')
+let gSelectedMemeUrl = ''
+let gMemeDrawToken = 0
 
-// window.addEventListener('resize', resizeCanvas)
-
-// resizeCanvas()
-// ctx.fillRect(25, 25, 100, 100);
-// ctx.clearRect(45, 45, 60, 60);
-// ctx.strokeRect(50, 50, 50, 50);
-
-// const img = new Image(); // Create new img element
-// img.src = "images/square/6.jpg"
-
-// img.onload = () => {
-//     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-// }
-
-function resizeCanvas() {
+function resizeCanvas(canvas) {
     canvas.width = canvas.clientWidth
     canvas.height = canvas.clientHeight
 }
 
-function renderMeme() {
+async function renderSelectedMeme() {
+    const canvas = document.querySelector('.canvas')
+    if (!canvas || !gSelectedMemeUrl) return
+
+    const ctx = canvas.getContext('2d')
+    resizeCanvas(canvas)
+
+    const drawToken = ++gMemeDrawToken
+
+    try {
+        const img = await loadImage(gSelectedMemeUrl)
+        if (drawToken !== gMemeDrawToken) return
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+    } catch (err) {
+        if (drawToken !== gMemeDrawToken) return
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+    }
+}
+
+function loadImage(imgUrl) {
+    return new Promise((resolve, reject) => {
+        const img = new Image()
+        img.onload = () => resolve(img)
+        img.onerror = reject
+        img.src = imgUrl
+    })
+}
+
+function renderMeme(selectedMemeUrl = '') {
+    if (selectedMemeUrl) gSelectedMemeUrl = selectedMemeUrl
+
     return `<div class="main-content grid">
                 <button class="btn back-btn" onclick="renderPage('gallery')">Back to Gallery</button>
 
@@ -38,4 +56,9 @@ function renderMeme() {
                     </ul>
                 </section>
             </div>`
+}
+
+function onMemeEditorResize() {
+    if (!document.querySelector('.meme-edit .canvas')) return
+    renderSelectedMeme()
 }

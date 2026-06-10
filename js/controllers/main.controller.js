@@ -2,11 +2,11 @@
 
 async function onInit() {
     await _initCards()
-    // resizeCanvas()
-    // renderPage('gallery')
+    window.addEventListener('resize', onMemeEditorResize)
+    renderPage('gallery')
 }
 
-function renderPage(pageName) {
+function renderPage(pageName, pageData = '') {
     const elMain = document.querySelector('main')
     toggleClass(elMain, pageName)
 
@@ -24,7 +24,8 @@ function renderPage(pageName) {
     }
 
     if (pageName === 'meme-edit') {
-        elMain.innerHTML = renderMeme()
+        elMain.innerHTML = renderMeme(pageData)
+        renderSelectedMeme()
     }
 
     if (pageName === 'about') {
