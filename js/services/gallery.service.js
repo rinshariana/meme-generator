@@ -13,6 +13,10 @@ function getCards(filter = null) {
     return gCards.filter(card => card.tags.toLowerCase().includes(searchTxt))
 }
 
+// function getCardUrl(id) {
+//     return gCards.filter(card => card.id === id)
+// }
+
 // Private
 
 function _createCard(id, url) {
@@ -26,7 +30,7 @@ async function _initCards() {
         return
     }
 
-    const response = await fetch('metadata/cards.json')
+    const response = await fetch('services/metadata/cards.json')
     if (!response.ok) {
         gCards = []
         return
