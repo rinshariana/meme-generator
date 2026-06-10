@@ -5,4 +5,8 @@
     --clr-primary-1: #E5E5E5;
     --clr-primary-base: #989898;
     --clr-primary--1: #FF9826;
+
+    /* sizes */
+
+    --header-height: 3.125em;
 }
