@@ -2,11 +2,6 @@
 
 let gFilter = null
 
-async function onInit() {
-    await _initCards()
-    renderCards()
-}
-
 function renderCards() {
     const elCards = document.querySelector('.cards')
 
@@ -20,7 +15,7 @@ function renderCards() {
     } else {
         strHtml += cards.map(card => {
         return `
-                <div class="card">
+                <div class="card" onclick="renderPage('meme-edit')">
                     <img src="${card.url}" alt="card">
                 </div>
                 `
