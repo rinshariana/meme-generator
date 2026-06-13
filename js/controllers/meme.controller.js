@@ -41,19 +41,48 @@ function loadImage(imgUrl) {
 function renderMeme(selectedMemeUrl = '') {
     if (selectedMemeUrl) gSelectedMemeUrl = selectedMemeUrl
 
-    return `<div class="main-content grid">
-                <button class="btn back-btn" onclick="renderPage('gallery')">Back to Gallery</button>
-
-                <div class="canvas-container">
+    return `<div class="edit-layout grid">
+                <section>
+                    <button class="btn back-btn" onclick="renderPage('gallery')">Back to Gallery</button>
                     <canvas class="canvas"></canvas>
-                </div>
+                </section>
 
-                <section class="toolbar">
-                    <ul class="clean-list grid">
-                        <li><h2>Edit Text Lines</h2></li>
-                        <!-- <li><button class="btn">Gallery</button></li>
-                        <li><button class="btn">About</button></li> -->
-                    </ul>
+                <section class="toolbar grid">
+                    <div class="grid flow-column space-between">
+                        <h2>Edit Text Lines</h2>
+                        <ul class="clean-list grid flow-column">
+                            <li><button class="btn">1/2</button></li>
+                            <li><button class="btn">&#10607</button></li>
+                            <li><button class="btn"><i class="fa-regular fa-square-plus"></i></button></li>
+                            <li><button class="btn"><i class="fa-regular fa-trash-can"></i></i></button></li>
+                        </ul>
+                    </div>
+
+                    <div class="font-editor">
+                        <select class="font-select">
+                            <option selected>Impact</option>
+                            <option>Anton</option>
+                            <option>Arial</option>
+                        </select>
+
+                        <button class="btn">A-</button>
+                        <button class="btn">A+</button>
+
+                        <span class="toolbar-divider">|</span>
+
+                        <button class="btn"><i class="fa-solid fa-align-left"></i></button>
+                        <button class="btn"><i class="fa-solid fa-align-center"></i></button>
+                        <button class="btn"><i class="fa-solid fa-align-right"></i></button>
+
+                        <span class="toolbar-divider">|</span>
+
+                        <button class="btn">A</button>
+                        <button class="btn">✎</button>
+
+                        <hr class="custom-line">
+
+                        <textarea class="text-line-input" autofocus onfocus="this.setSelectionRange(this.value.length, this.value.length)">One does not simply</textarea>
+                    </div>
                 </section>
             </div>`
 }

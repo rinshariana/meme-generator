@@ -11,14 +11,7 @@ function renderPage(pageName, pageData = '') {
     toggleClass(elMain, pageName)
 
     if (pageName === 'gallery') {
-        elMain.innerHTML = `
-        <input 
-            oninput="onFilterCards(this)" 
-            class="search-input" 
-            type="text" 
-            placeholder="Search" />
-        <section class="cards grid"></section>
-        `
+        elMain.innerHTML = renderGallery()
 
         renderCards()
     }

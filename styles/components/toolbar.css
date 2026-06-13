@@ -1,4 +1,12 @@
+.toolbar>.font-editor {
+    background-color: white;
 
-.toolbar {
+    border: solid 1px var(--clr-primary-1);
+    border-radius: var(--border-radius);
+}
 
+.font-editor textarea {
+    border: none;
+    width: 100%;
+    padding-inline: 5px;
 }
