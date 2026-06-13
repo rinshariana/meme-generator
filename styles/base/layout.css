@@ -27,15 +27,15 @@
 
 /* Main Content Gallery Layout */
 
-.gallery {
+.gallery .main-layout {
     grid-template-rows: 1.875em 2.625em 1.875em auto;
 }
 
-.gallery .search-input {
+.gallery .main-layout .search-input {
     grid-row: 2;
 }
 
-.gallery .cards {
+.gallery .main-layout .cards {
     grid-row: 4;
 }
 

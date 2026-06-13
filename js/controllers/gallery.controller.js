@@ -25,6 +25,17 @@ function renderCards() {
     elCards.innerHTML = strHtml
 }
 
+function renderGallery() {
+    return `<div class="main-layout grid">
+        <input 
+            oninput="onFilterCards(this)" 
+            class="search-input" 
+            type="text" 
+            placeholder="Search" />
+        <section class="cards grid"></section>
+    </div>`
+}
+
 function onFilterCards(elInput) {
 	gFilter = elInput.value
 	renderCards()
@@ -33,3 +44,4 @@ function onFilterCards(elInput) {
 function onCardClick(cardUrl) {
     renderPage('meme-edit', cardUrl)
 }
+
