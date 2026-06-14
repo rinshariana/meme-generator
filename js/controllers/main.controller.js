@@ -6,7 +6,7 @@ async function onInit() {
     renderPage('gallery')
 }
 
-function renderPage(pageName, pageData = '') {
+function renderPage(pageName) {
     const elMain = document.querySelector('main')
     toggleClass(elMain, pageName)
 
@@ -17,7 +17,7 @@ function renderPage(pageName, pageData = '') {
     }
 
     if (pageName === 'meme-edit') {
-        elMain.innerHTML = renderMeme(pageData)
+        elMain.innerHTML = renderMeme()
         renderSelectedMeme()
     }
 

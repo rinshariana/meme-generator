@@ -13,9 +13,9 @@ function getCards(filter = null) {
     return gCards.filter(card => card.tags.toLowerCase().includes(searchTxt))
 }
 
-// function getCardUrl(id) {
-//     return gCards.filter(card => card.id === id)
-// }
+function getCardById(cardId) {
+    return gCards.find(card => card.id === cardId) || null
+}
 
 // Private
 

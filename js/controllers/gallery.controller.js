@@ -15,7 +15,7 @@ function renderCards() {
     } else {
         strHtml += cards.map(card => {
         return `
-                <div class="card" onclick="onCardClick('${card.url}')">
+                <div class="card" onclick="onCardClick(${card.id})">
                     <img src="${card.url}" alt="card">
                 </div>
                 `
@@ -41,7 +41,7 @@ function onFilterCards(elInput) {
 	renderCards()
 }
 
-function onCardClick(cardUrl) {
-    renderPage('meme-edit', cardUrl)
+function onCardClick(cardId) {
+    setMemeImg(cardId)
+    renderPage('meme-edit')
 }
-

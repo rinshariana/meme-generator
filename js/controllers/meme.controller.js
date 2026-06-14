@@ -1,6 +1,5 @@
 'use strict'
 
-let gSelectedMemeUrl = ''
 let gMemeDrawToken = 0
 
 function resizeCanvas(canvas) {
@@ -10,7 +9,9 @@ function resizeCanvas(canvas) {
 
 async function renderSelectedMeme() {
     const canvas = document.querySelector('.canvas')
-    if (!canvas || !gSelectedMemeUrl) return
+    const meme = getMeme()
+    const selectedCard = getCardById(meme.imgId)
+    if (!canvas || !selectedCard) return
 
     const ctx = canvas.getContext('2d')
     resizeCanvas(canvas)
@@ -18,7 +19,7 @@ async function renderSelectedMeme() {
     const drawToken = ++gMemeDrawToken
 
     try {
-        const img = await loadImage(gSelectedMemeUrl)
+        const img = await loadImage(selectedCard.url)
         if (drawToken !== gMemeDrawToken) return
 
         ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -38,9 +39,7 @@ function loadImage(imgUrl) {
     })
 }
 
-function renderMeme(selectedMemeUrl = '') {
-    if (selectedMemeUrl) gSelectedMemeUrl = selectedMemeUrl
-
+function renderMeme() {
     return `<div class="edit-layout grid">
                 <section>
                     <button class="btn back-btn" onclick="renderPage('gallery')">Back to Gallery</button>
@@ -52,14 +51,14 @@ function renderMeme(selectedMemeUrl = '') {
                         <h2>Edit Text Lines</h2>
                         <ul class="clean-list grid flow-column">
                             <li><button class="btn">1/2</button></li>
-                            <li><button class="btn">&#10607</button></li>
-                            <li><button class="btn"><i class="fa-regular fa-square-plus"></i></button></li>
-                            <li><button class="btn"><i class="fa-regular fa-trash-can"></i></i></button></li>
+                            <li><button class="btn" onclick="onSwitchLine()">&#10607</button></li>
+                            <li><button class="btn" onclick="onAddLine()"><i class="fa-regular fa-square-plus"></i></button></li>
+                            <li><button class="btn" onclick="onDeleteLine()"><i class="fa-regular fa-trash-can"></i></button></li>
                         </ul>
                     </div>
 
                     <div class="font-editor">
-                        <select class="font-select">
+                        <select class="font-select" onchange="onFontChange(this)">
                             <option selected>Impact</option>
                             <option>Anton</option>
                             <option>Arial</option>
@@ -90,4 +89,12 @@ function renderMeme(selectedMemeUrl = '') {
 function onMemeEditorResize() {
     if (!document.querySelector('.meme-edit .canvas')) return
     renderSelectedMeme()
+}
+
+
+function onFontChange(elFontSelect) {
+    const fontFamily = elFontSelect.value
+    console.log(fontFamily)
+
+    document.querySelector('.meme-text').style.fontFamily = elFontSelect.value
 }
